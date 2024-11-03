@@ -89,4 +89,83 @@ create table if not exists user
 unionId, mpOpenId是为了实现公众号登陆的(扫码登陆), 每个微信用户在同一家公司(主体)的unionId是唯一的, 在同一个公众号下的mpOpenId是唯一的。
 
 ##### 2.题库表
+```sql
+-- 题库表
+create table if not exists question_bank
+(
+    id          bigint auto_increment comment 'id' primary key,
+    title       varchar(256)                       null comment '标题',
+    description text                               null comment '描述',
+    picture     varchar(2048)                      null comment '图片url',
+    userId      bigint                             not null comment '创建用户 id',
+    editTime    datetime default CURRENT_TIMESTAMP not null comment '编辑时间',
+    createTime  datetime default CURRENT_TIMESTAMP not null comment '创建时间',
+    updateTime  datetime default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '更新时间',
+    isDelete    tinyint  default 0                 not null comment '是否删除',
+    index idx_title (title)
+) comment '题库' collate = utf8mb4_unicode_ci;
+
+```
+> text不是无限长度, 最长长度是65535个字符, 超过这个长度就会报错, 需要手动截断。如果text不够, 可以用
+
+##### 3.题目表
+```sql
+-- 题目表
+create table if not exists question
+(
+    id         bigint auto_increment comment 'id' primary key,
+    title      varchar(256)                       null comment '标题',
+    content    text                               null comment '内容',
+    tags       varchar(1024)                      null comment '标签列表（json 数组）',
+    answer     text                               null comment '推荐答案',
+    userId     bigint                             not null comment '创建用户 id',
+    editTime   datetime default CURRENT_TIMESTAMP not null comment '编辑时间',
+    createTime datetime default CURRENT_TIMESTAMP not null comment '创建时间',
+    updateTime datetime default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '更新时间',
+    isDelete   tinyint  default 0                 not null comment '是否删除',
+    index idx_title (title),
+    index idx_userId (userId)
+) comment '题目' collate = utf8mb4_unicode_ci;
+
+```
+
+##### 4.题库题目关系表(题库题目为多对多关系)
+由于一个题库可以有多个题目, 一个题目可以属于多个题库, 所以需要一张关系表来存储题库和题目的关系。
+
+```sql
+-- 题库题目表（硬删除）
+create table if not exists question_bank_question
+(
+    id             bigint auto_increment comment 'id' primary key,
+    questionBankId bigint                             not null comment '题库 id',
+    questionId     bigint                             not null comment '题目 id',
+    userId         bigint                             not null comment '创建用户 id',
+    createTime     datetime default CURRENT_TIMESTAMP not null comment '创建时间',
+    updateTime     datetime default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '更新时间',
+    UNIQUE (questionBankId, questionId)
+) comment '题库题目' collate = utf8mb4_unicode_ci;
+
+```
+
+由于关联表中的数据记录没有那么重要, 所以直接采用硬删除的方式, 如果题目被移出题库, 直接删掉对应的数据即可。
+
+> `UNIQUE (questionBankId, questionId)`, 这里创建了唯一索引, 并指定了questionBankId在前, 是因为业务场景中 经常是根据题库查询下面所有的题目, 这样设计更容易满足mysql索引的最左匹配原则
+
+mysql索引:
+- [mysql 索引](https://blog.csdn.net/weixin_74078718/article/details/132259392)
+- [mysql之联合索引与最左匹配原则](https://blog.csdn.net/aiwangtingyun/article/details/134897381)
+- [mysql的联合索引](https://blog.csdn.net/qq_37080455/article/details/139710370)
+
+### 后端项目初始化
+##### 后端万用模版
+
+
+
+
+
+
+
+
+
+
 
