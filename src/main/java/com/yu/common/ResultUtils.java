@@ -31,6 +31,13 @@ public class ResultUtils {
 
     /**
      * 返回失败响应
+     */
+    public static BaseResponse error(int code, String message) {
+        return new BaseResponse(code, null, message);
+    }
+
+    /**
+     * 返回失败响应
      * */
     public static BaseResponse error(ErrorCode errorCode, String message){
         return new BaseResponse(errorCode.getCode(), null, message);
