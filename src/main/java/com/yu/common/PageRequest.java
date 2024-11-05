@@ -5,6 +5,7 @@ package com.yu.common;/**
  * @version:1.0
  */
 
+import com.yu.constant.CommonConstant;
 import lombok.Data;
 
 /**

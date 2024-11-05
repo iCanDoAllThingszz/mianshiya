@@ -6,6 +6,11 @@ package com.yu.aop;/**
  */
 
 import com.yu.annotation.AuthCheck;
+import com.yu.common.ErrorCode;
+import com.yu.exception.BusinessException;
+import com.yu.model.entity.User;
+import com.yu.model.enums.UserRoleEnum;
+import com.yu.service.UserService;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -52,11 +57,11 @@ public class AuthInterceptor {
         //校验权限
         UserRoleEnum userRoleEnum = UserRoleEnum.getEnumByValue(loginUser.getUserRole());
         if (userRoleEnum == null) {
-            throw new BusinessException(ResponseCode.NO_AUTH_ERROR);
+            throw new BusinessException(ErrorCode.NO_AUTH_ERROR);
         }
         //如果被封号 直接拒绝
         if (UserRoleEnum.BAN.equals(userRoleEnum)) {
-            throw new BusinessException(ResponseCode.NO_AUTH_ERROR);
+            throw new BusinessException(ErrorCode.NO_AUTH_ERROR);
         }
         //权限要求必须是管理员时
         // 必须有管理员权限

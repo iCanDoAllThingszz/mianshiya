@@ -5,6 +5,7 @@ package com.yu.controller;/**
  * @version:1.0
  */
 
+import com.yu.wxmp.WxMpConstant;
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.common.api.WxConsts;
 import me.chanjar.weixin.common.bean.menu.WxMenu;

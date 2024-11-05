@@ -159,7 +159,7 @@ mysql索引:
 ### 后端项目初始化
 ##### 后端万用模版
 
-
+knife4j接口文档:http://localhost:8101/api/doc.html#/home
 
 
 

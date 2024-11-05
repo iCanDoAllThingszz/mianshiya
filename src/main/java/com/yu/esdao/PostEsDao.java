@@ -1,5 +1,6 @@
 package com.yu.esdao;
 
+import com.yu.model.dto.post.PostEsDTO;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
 import java.util.List;

@@ -8,9 +8,16 @@ package com.yu.controller;/**
 import com.yu.common.BaseResponse;
 import com.yu.common.ErrorCode;
 import com.yu.common.ResultUtils;
+import com.yu.exception.BusinessException;
+import com.yu.model.dto.postthumb.PostThumbAddRequest;
+import com.yu.model.entity.User;
+import com.yu.service.PostThumbService;
+import com.yu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -20,6 +27,9 @@ import javax.servlet.http.HttpServletRequest;
  * @Author zhaoyu
  * @Date 2024/11/4
  */
+
+@RestController
+@RequestMapping("/postThumb")
 public class PostThumbController {
 
     @Autowired
@@ -35,7 +45,7 @@ public class PostThumbController {
      * @param request
      * @return resultNum 本次点赞变化数
      */
-    @PostMapping("/")
+    @PostMapping("/doThumb")
     public BaseResponse<Integer> doThumb(@RequestBody PostThumbAddRequest postThumbAddRequest,
                                          HttpServletRequest request) {
         if (postThumbAddRequest == null || postThumbAddRequest.getPostId() <= 0) {

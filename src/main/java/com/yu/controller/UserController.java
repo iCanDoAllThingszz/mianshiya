@@ -8,10 +8,18 @@ package com.yu.controller;/**
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.yu.annotation.AuthCheck;
 import com.yu.common.BaseResponse;
+import com.yu.common.DeleteRequest;
 import com.yu.common.ErrorCode;
 import com.yu.common.ResultUtils;
 import com.yu.config.WxOpenConfig;
 import com.yu.constant.UserConstant;
+import com.yu.exception.BusinessException;
+import com.yu.exception.ThrowUtils;
+import com.yu.model.dto.user.*;
+import com.yu.model.entity.User;
+import com.yu.model.vo.LoginUserVO;
+import com.yu.model.vo.UserVO;
+import com.yu.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.common.bean.WxOAuth2UserInfo;
 import me.chanjar.weixin.common.bean.oauth2.WxOAuth2AccessToken;
@@ -25,6 +33,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+
+import static com.yu.service.impl.UserServiceImpl.SALT;
 
 /**
  * @ClassName UserController

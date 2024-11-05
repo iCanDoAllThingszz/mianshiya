@@ -7,6 +7,9 @@ package com.yu.job.cycle;/**
 
 import cn.hutool.core.collection.CollUtil;
 import com.yu.esdao.PostEsDao;
+import com.yu.mapper.PostMapper;
+import com.yu.model.dto.post.PostEsDTO;
+import com.yu.model.entity.Post;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
