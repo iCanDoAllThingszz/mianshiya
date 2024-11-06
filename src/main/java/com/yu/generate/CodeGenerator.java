@@ -35,9 +35,9 @@ public class CodeGenerator {
     public static void main(String[] args) throws TemplateException, IOException {
         // 指定生成参数
         String packageName = "com.yu";
-        String dataName = "题库题目关联";
-        String dataKey = "questionBankQuestion";
-        String upperDataKey = "QuestionBankQuestion";
+        String dataName = "题目";
+        String dataKey = "question";
+        String upperDataKey = "Question";
 
         // 封装生成参数
         Map<String, Object> dataModel = new HashMap<>();

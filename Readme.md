@@ -19,7 +19,7 @@
 - Java Spring Boot + Maven多模块构建 
 - Mysql数据库 + MyBatis-Plus框架 + MyBatis X
 - Redis分布式缓存 + Caffeine本地缓存
-- Redission分布式锁 + Bitmap + BlomFilter
+- Redission分布式锁 + Bitmap + BloomFilter
 - Elasticsearch搜索引擎 ⭐️
 - Druid数据库连接池 + 并发编程 ⭐
 - Sa-Token 权限控制️ ⭐️
@@ -159,7 +159,7 @@ mysql索引:
 ### 后端项目初始化
 ##### 后端万用模版
 
-knife4j接口文档: http://localhost:8101/api/doc.html#/home
+> knife4j接口文档: http://localhost:8101/api/doc.html#/home
 
 > 回滚修改的文件: git rollback
 
