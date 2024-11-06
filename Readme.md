@@ -163,8 +163,21 @@ knife4j接口文档: http://localhost:8101/api/doc.html#/home
 
 > 回滚修改的文件: git rollback
 
+### 后端基础开发-CRUD
+先完成几张核心数据表的增删改查功能, **先不包含任何复杂的业务逻辑**
 
+##### 1.DAO层代码生成
+使用MyBatis X插件, 生成mapper和数据库实体类, 生成后移动到项目对应包下 <br/>
+选中需要生成代码的表, 使用MyBatis X - Generator 生成代码
 
+![img_2.png](img_2.png)
+
+> mybatis plus 的注解官方文档说明: https://baomidou.com/reference/annotation
+
+##### 2.业务代码生成
+使用generator下的CodeGenerator类, 通过模版文件生成业务代码 **修改根据模版文件生成的代码(请求dto, 响应vo等)**<br/>
+
+> dto接收/传递数据, po和数据库实体对应, vo前端需要什么就返回什么
 
 
 

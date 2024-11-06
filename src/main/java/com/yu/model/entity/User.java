@@ -1,45 +1,36 @@
-package com.yu.model.entity;/**
- * @Author:zhoayu
- * @Date:2024/11/4 19:43
- * @Description:com.yu.model.entity
- * @version:1.0
- */
+package com.yu.model.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
-import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
+import lombok.Data;
 
 /**
- * @ClassName User
- * @Description // 用户实体-PO 持久层对象
- * @Author zhaoyu
- * @Date 2024/11/4
+ * 用户
+ * @TableName user
  */
-
-@TableName(value = "user")
+@TableName(value ="user")
 @Data
 public class User implements Serializable {
-
     /**
      * id
      */
-    @TableId(type = IdType.ASSIGN_ID)
+    @TableId(type = IdType.AUTO)
     private Long id;
 
     /**
-     * 用户账号
+     * 账号
      */
     private String userAccount;
 
     /**
-     * 用户密码
+     * 密码
      */
     private String userPassword;
 
     /**
-     * 开放平台id
+     * 微信开放平台id
      */
     private String unionId;
 
@@ -69,6 +60,11 @@ public class User implements Serializable {
     private String userRole;
 
     /**
+     * 编辑时间
+     */
+    private Date editTime;
+
+    /**
      * 创建时间
      */
     private Date createTime;
@@ -87,5 +83,3 @@ public class User implements Serializable {
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 }
-
- 

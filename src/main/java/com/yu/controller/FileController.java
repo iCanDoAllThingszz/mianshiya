@@ -5,8 +5,6 @@ package com.yu.controller;/**
  * @version:1.0
  */
 
-import com.yu.model.entity.User;
-import com.yu.service.UserService;
 import cn.hutool.core.io.FileUtil;
 import com.yu.common.BaseResponse;
 import com.yu.common.ErrorCode;
@@ -15,7 +13,9 @@ import com.yu.constant.FileConstant;
 import com.yu.exception.BusinessException;
 import com.yu.manager.CosManager;
 import com.yu.model.dto.file.UploadFileRequest;
+import com.yu.model.entity.User;
 import com.yu.model.enums.FileUploadBizEnum;
+import com.yu.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
